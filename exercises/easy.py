@@ -193,6 +193,22 @@ books_list = [250, 120, 340, 90, 200]
 sorted_books = sort_books(books_list)
 print(sorted_books)
 
+from random import randrange
+# Quick sort:
+def quick_sort(array):
+    if len(array) < 2:
+        return array
+    else:
+        pivot = array.pop(randrange(len(array)))
+        kichik = [i for i in array if i <= pivot]
+        katta = [i for i in array if i > pivot]
+        print(f"{kichik} + [{pivot}] + {katta}")
+        return quick_sort(kichik) + [pivot] + quick_sort(katta)
+
+if __name__ == '__main__':
+    array1 = [1, 5, 6, 12, 0, -3, 60]
+    print(array1)
+    print(quick_sort(array1))
 
 
 
