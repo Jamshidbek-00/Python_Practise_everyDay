@@ -139,8 +139,3 @@ def salom_ber(ism):
     print(f"Salom ! {ism}")
 salom_ber("Ali")
 salom_ber("Abdulloh")
-
-
-git remote add origin https://github.com/Jamshidbek-00/Python_Practise_everyDay.git
-git branch -M main
-git push -u origin main
