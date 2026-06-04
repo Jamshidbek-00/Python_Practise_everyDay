@@ -135,7 +135,7 @@ for x in array:
     sum += x
 print(sum)
 '''
-
+"""
 # BuBBle sort:
 def bubble_sort_temperature(temps):
     n = len(temps)
@@ -193,6 +193,7 @@ books_list = [250, 120, 340, 90, 200]
 sorted_books = sort_books(books_list)
 print(sorted_books)
 
+# 5-masala:
 from random import randrange
 # Quick sort:
 def quick_sort(array):
@@ -209,6 +210,146 @@ if __name__ == '__main__':
     array1 = [1, 5, 6, 12, 0, -3, 60]
     print(array1)
     print(quick_sort(array1))
+"""
+
+# 6-masala:
+# merge sort:
+'''
+def merge_sort(massiv):
+    if len(massiv) <= 1:
+        return massiv
+
+    mid = len(massiv) // 2
+    left_half = massiv[:mid]
+    right_half = massiv[mid:]
+
+    sorted_left = merge_sort(left_half)
+    sorted_right = merge_sort(right_half)
+
+    return merge(sorted_left, sorted_right)
+def merge(left, right):
+    result = []
+    i = 0
+    j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+my_array = [3, 8, 4, 0, 5, 9]
+print("Natija: ", merge_sort(my_array))
+'''
+
+# 7-Masala: "Online Do‘kon: Narxlarni arzonidan qimmatiga saralash"
+# Shart: Siz yirik bir online do‘konda backend dasturchisiz. Foydalanuvchi qidiruv tizimidan foydalanganda, mahsulotlarni eng arzonidan boshlab eng qimmatiga qarab (o‘sish tartibida) ko‘rmoqchi bo‘ldi.
+# Sizga mahsulotlarning narxlari tartibsiz massiv ko‘rinishida beriladi:
+# narxlar = [1200, 450, 2000, 150, 700, 450]
+# Siz yuqorida o‘rgangan Merge Sort algoritmidan foydalanib, bu narxlarni tartiblab beruvchi funksiyani yozishingiz kerak.
+'''
+def online_market(prices):
+    if len(prices) <= 1:
+        return prices
+
+    mid = len(prices) // 2
+    left_half = prices[:mid]
+    right_half = prices[mid:]
+
+    # O'zini qayta chaqirib (Rekursiya), bo'laklarni yana maydalaymiz
+    sorted_left = online_market(left_half)
+    sorted_right = online_market(right_half)
+
+    return merge(sorted_left, sorted_right)
+def merge(left, right):
+    result = []
+    i = 0
+    j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+my_prices = [1200, 450, 2000, 150, 700, 450]
+print("Tartiblangan narxlar: ", online_market(my_prices))
 
 
+
+# 8-Masala:
+def quick_sort(massiv):
+    if len(massiv) <= 1:
+        return massiv
+    pivot = massiv[-1]
+    left = [x for x in massiv[:-1] if x <= pivot]
+    right = [x for x in massiv[:-1] if x > pivot]
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
+my_list = [4, 2, 9, 1, -1, 22, 5]
+print("Tartiblangan quick sort: ", quick_sort(my_list))
+
+
+
+def kutubxona(kitoblar):
+    if len(kitoblar) <= 1:
+        return kitoblar
+    pivot = kitoblar[-1]
+    left = [x for x in kitoblar[:-1] if x <= pivot]
+    right = [x for x in kitoblar[:-1] if x > pivot]
+    print(f"{left} + {[pivot]} + {right}")
+    return kutubxona(left) + [pivot] + kutubxona(right)
+
+my_books_lists = [2, 4, 6, 666, 888, 99, 0, 11]
+print("Tartiblangan kitoblar: ", kutubxona(my_books_lists))
+
+
+# Binary Search:
+# 10-masala:
+def binary_search(array, target):
+    low = 0
+    high = len(array)-1
+    while low <= high:
+        mid = (low + high) // 2
+        if array[mid] == target:
+            return mid
+        elif array[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+lists = [1, 3, 5, 5, 8, 9, 10]
+target_value = 8
+result_index = binary_search(lists, target=target_value)
+print(f"Element: {target_value} fount at index: {result_index}")
+'''
+
+
+# 11-masala
+def books(massiv, target):
+    l = 0
+    h = len(massiv) - 1
+
+    while l <= h:
+        middle = (l + h) // 2
+        if massiv[middle] == target:
+            return middle
+        elif massiv[middle] < target:
+            l = middle + 1
+        else:
+            h = middle - 1
+    return -1
+book_ids = [101, 204, 305, 408, 512, 660, 750, 822, 901]
+targett = 512
+results = books(book_ids, target=targett)
+print("Finally result: ", results)
 
