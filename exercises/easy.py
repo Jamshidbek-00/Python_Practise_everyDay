@@ -331,7 +331,7 @@ lists = [1, 3, 5, 5, 8, 9, 10]
 target_value = 8
 result_index = binary_search(lists, target=target_value)
 print(f"Element: {target_value} fount at index: {result_index}")
-'''
+
 
 
 # 11-masala
@@ -349,7 +349,56 @@ def books(massiv, target):
             h = middle - 1
     return -1
 book_ids = [101, 204, 305, 408, 512, 660, 750, 822, 901]
+print(book_ids)
 targett = 512
 results = books(book_ids, target=targett)
 print("Finally result: ", results)
+
+
+
+# Binary Search:
+def binary_search(numbers, target):
+    low = 0
+    high = len(numbers)-1
+
+    while low <= high:
+        middle = (low+high)//2
+        if numbers[middle] == target:
+            return middle
+        elif numbers[middle] < target:
+            low = middle + 1
+        else:
+            high = middle -1
+    return -1
+sonlar = [10, 20, 30, 40, 50, 60, 70]
+print(sonlar)
+maqsad = 60
+results = binary_search(sonlar, target=maqsad)
+print("Finally: ", results)
+'''
+
+# Two pointers:
+
+def two_pointer(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    while left < right:
+        currently_sum = nums[left] + nums[right]
+
+        if currently_sum == target:
+            return [nums[left], nums[right]]
+        elif currently_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return []
+
+my_nums = [1, 3, 4, 6, 8, 10]
+my_target = 13
+result = two_pointer(my_nums, target=my_target)
+print("Result: ", result)
+
+
+
 
